@@ -10,14 +10,18 @@ import {
   MDBNavbarToggler,
   MDBCollapse,
 } from "mdb-react-ui-kit";
+import { NavLink } from "react-router-dom";
 
 //Header component
 const Header = () => {
   //navbar toggler for mobile view
   const [navbarToggler, setNavbarToggler] = useState(false);
-
+  //nav link classes
+  //  const navLinkClasses  = ( isActive:object ) => {
+  //   return isActive.isActive ? "text-danger" : "normal";
+  // };
   //see if the use is logged in
-  let login = false;
+  let login = true;
 
   //routes
   const routes = [
@@ -26,7 +30,7 @@ const Header = () => {
       name: "Home",
     },
     {
-      link: "/",
+      link: "/account-settings",
       name: "Account Settings",
     },
   ];
@@ -59,7 +63,14 @@ const Header = () => {
                   return (
                     <MDBNavbarItem key={index}>
                       <MDBNavbarLink className="fw-bold">
-                        {route.name}
+                        <NavLink
+                          to={route.link}
+                          className={({ isActive }) =>
+                            isActive ? "text-dark" : "text-muted"
+                          }
+                        >
+                          {route.name}
+                        </NavLink>
                       </MDBNavbarLink>
                     </MDBNavbarItem>
                   );

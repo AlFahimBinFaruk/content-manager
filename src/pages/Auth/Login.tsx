@@ -1,5 +1,6 @@
 //MDB component
 import { MDBBtn, MDBCol, MDBInput } from "mdb-react-ui-kit";
+import { Link } from "react-router-dom";
 //App component
 import LoginWithGoogleBtn from "./components/LoginWithGoogleBtn";
 //Login component
@@ -11,9 +12,19 @@ const Login = () => {
         {/* login form */}
         <div className="login-form">
           {/* email */}
-          <MDBInput type="email" label="Email Address" className="mb-2" />
+          <MDBInput
+            type="email"
+            label="Email Address"
+            className="mb-2"
+            size="sm"
+          />
           {/* password */}
-          <MDBInput type="password" label="Password" className="mb-3" />
+          <MDBInput
+            type="password"
+            label="Password"
+            className="mb-3"
+            size="sm"
+          />
           {/* login btn */}
           <MDBBtn block className="rounded-0">
             Login
@@ -21,7 +32,7 @@ const Login = () => {
           {/* register page link */}
           <p className="text-center mt-2">
             <small>
-              Dont have an account? <a href="/register">Register</a>{" "}
+              Dont have an account? <Link to="/register">Register</Link>{" "}
             </small>
           </p>
           {/* login with google */}

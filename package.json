@@ -9,6 +9,8 @@
     "@types/react": "^16.14.25",
     "@types/react-dom": "^16.9.14",
     "@types/react-redux": "^7.1.24",
+    "axios": "^0.26.1",
+    "firebase": "^9.6.11",
     "mdb-react-ui-kit": "^3.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",

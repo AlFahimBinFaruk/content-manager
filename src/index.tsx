@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+
 import { store } from "./app/store";
 import { Provider } from "react-redux";
 import * as serviceWorker from "./serviceWorker";
 //alert context provider
 import { AppAlertProvider } from "./contexts/alertContext";
+
 //styles
 import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import "./index.css";

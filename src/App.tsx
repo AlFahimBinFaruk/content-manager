@@ -13,10 +13,14 @@ import ContentDetails from "./pages/ContentDetails";
 import Home from "./pages/Home";
 import ManageContent from "./pages/ManageContent";
 import Error from "./pages/Error";
+//Firebase
+import initializeFirebaseApp from "./firebase/config";
 //Main App
 function App() {
   //check if use is logged in
-  let login = true;
+  let login = false;
+  //Initialize the firebase app
+  initializeFirebaseApp();
   return (
     <div className="App">
       <BrowserRouter>
@@ -40,8 +44,8 @@ function App() {
               </>
             ) : (
               <>
-                <Route path="/" element={<Login />} />
-                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/" element={<Register />} />
               </>
             )}
             <Route path="*" element={<Error />} />

@@ -99,7 +99,7 @@ const Register = () => {
             type="text"
             id="username"
             value={username}
-            onChange={(e)=>handleChange(e)}
+            onChange={handleChange}
             label="Username"
             className="mb-2"
             size="sm"
@@ -109,7 +109,7 @@ const Register = () => {
             type="email"
             id="email"
             value={email}
-            onChange={(e)=>handleChange(e)}
+            onChange={handleChange}
             label="Email Address"
             className="mb-2"
             size="sm"
@@ -119,7 +119,7 @@ const Register = () => {
             type="password"
             id="password"
             value={password}
-            onChange={(e)=>handleChange(e)}
+            onChange={handleChange}
             label="Password"
             className="mb-3"
             size="sm"

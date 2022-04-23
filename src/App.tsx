@@ -18,7 +18,7 @@ import initializeFirebaseApp from "./firebase/config";
 //Main App
 function App() {
   //check if use is logged in
-  let login = false;
+  let login = true;
   //Initialize the firebase app
   initializeFirebaseApp();
   return (

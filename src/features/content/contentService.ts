@@ -1,7 +1,7 @@
 import axios from "axios";
 
 //api route that i want to hit
-const API_URL = `${process.env.REACT_APP_BASE_URL}/api/manage/`;
+const API_URL = `${process.env.REACT_APP_BASE_URL}/api/manage-content/`;
 
 //create new content
 const createContent = async (contentData: object, token: string) => {

@@ -12,12 +12,14 @@ type ContentDataType = {
 //initial state
 const initialState: {
   myContentList: ContentDataType[];
+  singleContentData: ContentDataType;
   isError: boolean;
   isSuccess: boolean;
   isLoading: boolean;
   message: string;
 } = {
   myContentList: [],
+  singleContentData: { title: "", contentURL: "", desc: "" },
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -166,6 +168,19 @@ export const manageContentSlice = createSlice({
         state.myContentList = action.payload;
       })
       .addCase(getMyContentList.rejected, (state: any, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getSingleContentData.pending, (state: any) => {
+        state.isLoading = true;
+      })
+      .addCase(getSingleContentData.fulfilled, (state: any, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.singleContentData = action.payload;
+      })
+      .addCase(getSingleContentData.rejected, (state: any, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

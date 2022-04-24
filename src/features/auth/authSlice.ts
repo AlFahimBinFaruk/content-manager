@@ -8,6 +8,7 @@ type UserType = {
   id: string;
   username: string | any;
   email: string | any;
+  loginWithGoogle:boolean | any;
   token: any;
 };
 

@@ -14,7 +14,7 @@ const AccountSettings = () => {
   const { user, isLoading, isError, isSuccess, message } = useAppSelector(
     (state) => state.auth
   );
-  let { email, username } = user;
+  let { email, username, loginWithGoogle } = user;
   console.log("user", user);
 
   interface formDataInterface {
@@ -109,53 +109,68 @@ const AccountSettings = () => {
             onClick={handleLogout}
           />
         </div>
-        {/* account settings form */}
-        <div className="account-settings-form">
-          {/* username */}
-          <div className="mb-3">
-            {/* old */}
-            <MDBInput label={username} disabled className="mb-2" size="sm" />
-            {/* new */}
-            <MDBInput
-              type="text"
-              id="newUsername"
-              value={newUsername}
-              onChange={handleChange}
-              label="New Username"
-              size="sm"
-            />
-          </div>
-          {/* email */}
-          <div className="mb-3">
-            {/* old */}
-            <MDBInput label={email} disabled className="mb-2" size="sm" />
-            {/* new */}
-            <MDBInput
-              type="email"
-              id="newEmail"
-              value={newEmail}
-              onChange={handleChange}
-              label="New Email"
-              size="sm"
-            />
-          </div>
-          {/* password */}
-          <div className="mb-3">
-            {/* new */}
-            <MDBInput
-              type="password"
-              id="newPassword"
-              value={newPassword}
-              onChange={handleChange}
-              label="New Password"
-              size="sm"
-            />
-          </div>
-          {/* handle submit btn */}
-          <MDBBtn block className="rounded-0" onClick={handleSubmit}>
-            Update
-          </MDBBtn>
-        </div>
+        {loginWithGoogle && loginWithGoogle === true ? (
+          <>
+            <h4 className="text-center text-info">
+              You Are Logged In With Google
+            </h4>
+          </>
+        ) : (
+          <>
+            {/* account settings form */}
+            <div className="account-settings-form">
+              {/* username */}
+              <div className="mb-3">
+                {/* old */}
+                <MDBInput
+                  label={username}
+                  disabled
+                  className="mb-2"
+                  size="sm"
+                />
+                {/* new */}
+                <MDBInput
+                  type="text"
+                  id="newUsername"
+                  value={newUsername}
+                  onChange={handleChange}
+                  label="New Username"
+                  size="sm"
+                />
+              </div>
+              {/* email */}
+              <div className="mb-3">
+                {/* old */}
+                <MDBInput label={email} disabled className="mb-2" size="sm" />
+                {/* new */}
+                <MDBInput
+                  type="email"
+                  id="newEmail"
+                  value={newEmail}
+                  onChange={handleChange}
+                  label="New Email"
+                  size="sm"
+                />
+              </div>
+              {/* password */}
+              <div className="mb-3">
+                {/* new */}
+                <MDBInput
+                  type="password"
+                  id="newPassword"
+                  value={newPassword}
+                  onChange={handleChange}
+                  label="New Password"
+                  size="sm"
+                />
+              </div>
+              {/* handle submit btn */}
+              <MDBBtn block className="rounded-0" onClick={handleSubmit}>
+                Update
+              </MDBBtn>
+            </div>
+          </>
+        )}
       </MDBCol>
     </div>
   );

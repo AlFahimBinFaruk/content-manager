@@ -94,7 +94,6 @@ const AccountSettings = () => {
   if (isLoading) {
     return <h5>Loading...</h5>;
   }
-
   return (
     <div className="vh-100 d-flex justify-content-center align-items-center">
       <MDBCol size="12" md="6" lg="3">
@@ -110,11 +109,9 @@ const AccountSettings = () => {
           />
         </div>
         {loginWithGoogle && loginWithGoogle === true ? (
-          <>
-            <h4 className="text-center text-info">
-              You Are Logged In With Google
-            </h4>
-          </>
+          <h4 className="text-center text-info">
+            You Are Logged In With Google
+          </h4>
         ) : (
           <>
             {/* account settings form */}

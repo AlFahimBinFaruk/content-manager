@@ -15,10 +15,13 @@ import ManageContent from "./pages/ManageContent";
 import Error from "./pages/Error";
 //Firebase
 import initializeFirebaseApp from "./firebase/config";
+import { useAppSelector } from "./app/hooks";
 //Main App
 function App() {
   //check if use is logged in
-  let login = true;
+  const { user } = useAppSelector(
+    (state) => state.auth
+  );
   //Initialize the firebase app
   initializeFirebaseApp();
   return (
@@ -31,7 +34,7 @@ function App() {
         {/* main container */}
         <MDBContainer className="my-5">
           <Routes>
-            {login ? (
+            {user ? (
               <>
                 <Route path="/" element={<Home />} />
                 <Route path="/manage-content" element={<ManageContent />} />

@@ -43,6 +43,11 @@ const updateAccount = async (userData: object, token: string) => {
   };
   //post new user dat
   const response = await axios.put(API_URL, userData, config);
+  //if we get data in response we will save it to localstorage
+  if (response.data) {
+     localStorage.setItem("user", JSON.stringify(response.data));
+    console.log("New data",response.data)
+  }
   //retrun response
   return response.data;
 };

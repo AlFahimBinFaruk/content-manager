@@ -144,7 +144,7 @@ const ManageContent = () => {
     <MDBCol size="12" md="6" lg="4" className="mx-auto vh-100">
       {/* top */}
       <div className="top d-flex justify-content-between align-items-end">
-        <h5 className="text-dark mb-0">Upload Content</h5>
+        <h5 className="text-dark mb-0">{!updateId ? "Upload Content" : "Update Content"}</h5>
         {/* input reset button */}
         <MDBBtn floating size="sm" onClick={resetInput}>
           <MDBIcon fas icon="sync-alt" size="sm" />
@@ -163,17 +163,24 @@ const ManageContent = () => {
           size="sm"
         />
         {/* content file */}
-        <div className="content mb-2">
-          <small className="form-label text-dark  fw-bold">
-            Select File(Image,Video,Audio)
-          </small>
-          <MDBInput
-            type="file"
-            size="sm"
-            onChange={handleContentUpload}
-            id="content"
+        {prevContentURL ? (
+          <PrevContent
+            prevContentURL={prevContentURL}
+            setPrevContentURL={setPrevContentURL}
           />
-        </div>
+        ) : (
+          <div className="content mb-2">
+            <small className="form-label text-dark  fw-bold">
+              Select File(Image,Video,Audio)
+            </small>
+            <MDBInput
+              type="file"
+              size="sm"
+              onChange={handleContentUpload}
+              id="content"
+            />
+          </div>
+        )}
 
         {/* content desc */}
         <MDBTextArea
@@ -188,13 +195,7 @@ const ManageContent = () => {
         {/* upload progress bar */}
         {uploadingProgress > 0 && (
           <MDBProgress className="mb-2">
-            <MDBProgressBar
-              bgColor="warning"
-              style={{ width: "75%" }}
-              width={uploadingProgress}
-              valuemin={0}
-              valuemax={100}
-            />
+            <MDBProgressBar bgColor='warning' width={uploadingProgress} valuemin={0} valuemax={100} />
           </MDBProgress>
         )}
         {/* submit btn */}

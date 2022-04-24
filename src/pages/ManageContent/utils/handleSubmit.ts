@@ -70,7 +70,7 @@ const uploadNewContent = (
     //if uploaded contnet is there
     if (uploadedContent) {
         const storage = getStorage();
-        const storageRef = ref(storage, uploadedContent.name + new Date());
+        const storageRef = ref(storage, uploadedContent.name +"-"+ new Date());
         const uploadTask = uploadBytesResumable(storageRef, uploadedContent);
 
         // Listen for state changes, errors, and completion of the upload.
@@ -138,12 +138,12 @@ const createNewContent = (
     dispatch: any
 ) => {
     if (title && desc && contentURL) {
-        const newsData = {
+        const newData = {
             title,
             desc,
             contentURL,
         };
-        dispatch(createContent(newsData)).then(() => {
+        dispatch(createContent(newData)).then(() => {
             setShowAlert({
                 msg: "Content Added",
                 color: "success",

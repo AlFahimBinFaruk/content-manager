@@ -5,9 +5,9 @@ import authService from "./authService";
 const user = JSON.parse(localStorage.getItem("user")!);
 
 type UserType = {
-  id: String;
-  username: String;
-  email: String;
+  id: string;
+  username: string | any;
+  email: string | any;
   token: any;
 };
 

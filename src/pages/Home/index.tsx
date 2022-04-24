@@ -8,7 +8,7 @@ import { getMyContentList, reset } from "../../features/content/contentSlice";
 import { useNavigate } from "react-router-dom";
 //Home component
 const Home = () => {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   //get initial state from  content store
   const { myContentList, isLoading, isError, message } = useAppSelector(
     (state) => state.content
@@ -25,7 +25,6 @@ const Home = () => {
     }
 
     dispatch(getMyContentList());
-    console.log("list",myContentList)
     return () => dispatch(reset());
   }, [isError, message, dispatch]);
 
@@ -39,7 +38,12 @@ const Home = () => {
       <div className="top d-flex justify-content-between align-items-center">
         <h5 className="text-dark">Manage All Your Contents.</h5>
         {/* add new button */}
-        <MDBBtn className="rounded-0" onClick={() => navigate("/manage-content")}>Add New</MDBBtn>
+        <MDBBtn
+          className="rounded-0"
+          onClick={() => navigate("/manage-content")}
+        >
+          Add New
+        </MDBBtn>
       </div>
       {/* contents */}
       <MDBRow className="contents gy-3 my-2">
@@ -47,12 +51,14 @@ const Home = () => {
           myContentList.map((i, index) => {
             return (
               <MDBCol size="12" md="4" xl="3" key={index}>
-                <SingleContentCard _id={""} {...i}/>
+                <SingleContentCard _id={""} {...i} />
               </MDBCol>
             );
           })
         ) : (
-          <h4>You Don't Have Any Content Yet.Upload Some!!!!</h4>
+          <h6 className="vh-100 text-center">
+            You Don't Have Any Content Yet.Upload Some!!!!
+          </h6>
         )}
       </MDBRow>
     </div>
